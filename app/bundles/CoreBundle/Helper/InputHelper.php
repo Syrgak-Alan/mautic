@@ -417,7 +417,7 @@ class InputHelper
             // Special handling for HTML comments
             $value = str_replace(['<!-->', '<!--', '-->'], ['<mcomment></mcomment>', '<mcomment>', '</mcomment>'], $value, $commentCount);
 
-            $hasUnicode = strlen($value) != strlen(iconv('UTF-8', 'Windows-1252', $value));
+            $hasUnicode = strlen($value) != strlen(iconv('UTF-8', 'Windows-1252//IGNORE', $value));
 
             $value = self::getFilter(true)->clean($value, $hasUnicode ? 'raw' : 'html');
 
